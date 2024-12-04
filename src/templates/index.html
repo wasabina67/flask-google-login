@@ -6,8 +6,14 @@
     <title>flask-google-login</title>
   </head>
   <body>
-    <div>
-      {{ user }}
-    </div>
+    {% if user %}
+      <div>
+        {{ user }}
+      </div>
+    {% else %}
+      <div>
+        <a href="/login">Login with Google</a>
+      </div>
+    {% endif %}
   </body>
 </html>
