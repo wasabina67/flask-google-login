@@ -68,9 +68,24 @@ def callback():
 
     url, headers, body = client.add_token(userinfo_endpoint)
     user_info = requests.get(url=url, data=body, headers=headers).json()
-
     print(user_info)
 
+    session["user"] = {
+        "sub": user_info.get("sub"),
+        "name": user_info.get("name"),
+        "given_name": user_info.get("given_name"),
+        "family_name": user_info.get("family_name"),
+        "picture": user_info.get("picture"),
+        "email": user_info.get("email"),
+        "email_verified": user_info.get("email_verified"),
+    }
+
+    return redirect("/")
+
+
+@app.route("/logout")
+def logout():
+    session.pop("user", None)
     return redirect("/")
 
 
