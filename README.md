@@ -21,7 +21,9 @@ cp -p .env.example .env
 - SECRET_KEY
   - Flask secret key
 - CLIENT_ID
+  - The client ID for your application registered on the Google Authentication platform
 - CLIENT_SECRET
+  - The client secret for your application registered on the Google Authentication platform
 - GOOGLE_OPENID_CONFIGURATION
 
 ## Run
