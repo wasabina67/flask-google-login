@@ -20,6 +20,7 @@ authorization_endpoint = openid_configuration["authorization_endpoint"]
 token_endpoint = openid_configuration["token_endpoint"]
 userinfo_endpoint = openid_configuration["userinfo_endpoint"]
 redirect_uri = "https://localhost:3443/callback"
+scope = ["openid", "email", "profile"]
 
 client = WebApplicationClient(client_id)
 
@@ -31,7 +32,11 @@ def index():
 
 @app.route("/login")
 def login():
-    request_uri = ""
+    request_uri = client.prepare_request_uri(
+        uri=authorization_endpoint,
+        redirect_uri=redirect_uri,
+        scope=scope,
+    )
     return redirect(request_uri)
 
 
