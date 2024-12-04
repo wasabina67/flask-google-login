@@ -1,7 +1,8 @@
 import os
 
+import requests  # type: ignore
 from dotenv import load_dotenv
-from flask import Flask, redirect, render_template, session
+from flask import Flask, redirect, render_template, request, session
 from oauthlib.oauth2 import WebApplicationClient  # type: ignore
 
 from utils import get_openid_configuration
@@ -38,6 +39,11 @@ def login():
         scope=scope,
     )
     return redirect(request_uri)
+
+
+@app.route("/callback")
+def callback():
+    return
 
 
 if __name__ == "__main__":
