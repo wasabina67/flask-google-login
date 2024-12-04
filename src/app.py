@@ -3,10 +3,16 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, redirect, render_template, session
 
+from utils import get_openid_configuration
+
 load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY")
+
+openid_configuration = get_openid_configuration(
+    os.getenv("GOOGLE_OPENID_CONFIGURATION")
+)
 
 
 @app.route("/")
