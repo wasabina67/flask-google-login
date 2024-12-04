@@ -8,4 +8,8 @@ Flask Google login
 
 ## Run
 
+```bash
+python src/app.py
+```
+
 Open https://localhost:3443/
