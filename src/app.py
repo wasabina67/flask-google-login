@@ -66,7 +66,12 @@ def callback():
     )
     client.parse_request_body_response(token_response.text)
 
-    return
+    url, headers, body = client.add_token(userinfo_endpoint)
+    user_info = requests.get(url=url, data=body, headers=headers).json()
+
+    print(user_info)
+
+    return redirect("/")
 
 
 if __name__ == "__main__":
