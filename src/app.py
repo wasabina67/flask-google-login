@@ -68,7 +68,7 @@ def callback():
 
     url, headers, body = client.add_token(userinfo_endpoint)
     user_info = requests.get(url=url, data=body, headers=headers).json()
-    print(user_info)
+    # print(user_info)
 
     session["user"] = {
         "sub": user_info.get("sub"),
