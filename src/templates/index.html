@@ -8,8 +8,14 @@
   <body>
     {% if user %}
       <div>
-        {{ user }}
         <a href="/logout">Logout</a>
+        <ul>
+          <li>name: {{ user["name"] }}</li>
+          <li>given_name: {{ user["given_name"] }}</li>
+          <li>family_name: {{ user["family_name"] }}</li>
+          <li>picture: {{ user["picture"] }}</li>
+          <li>email: {{ user["email"] }}</li>
+        </ul>
       </div>
     {% else %}
       <div>
