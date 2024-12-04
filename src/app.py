@@ -51,6 +51,21 @@ def callback():
     authorization_response = request_url.replace(
         "http://localhost/callback", redirect_uri
     )
+    token_url, headers, body = client.prepare_token_request(
+        token_url=token_endpoint,
+        authorization_response=authorization_response,
+        redirect_url=redirect_uri,
+        code=code,
+    )
+
+    token_response = requests.post(
+        url=token_url,
+        data=body,
+        headers=headers,
+        auth=(client_id, client_secret),
+    )
+    client.parse_request_body_response(token_response.text)
+
     return
 
 
