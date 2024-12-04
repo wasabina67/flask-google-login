@@ -43,6 +43,14 @@ def login():
 
 @app.route("/callback")
 def callback():
+    code = request.args.get("code")
+    if not code:
+        return "Error: No code provided", 400
+
+    request_url = request.url
+    authorization_response = request_url.replace(
+        "http://localhost/callback", redirect_uri
+    )
     return
 
 
