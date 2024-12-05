@@ -34,4 +34,4 @@ python src/app.py
 
 Open https://localhost:3443/
 
-![](images/demo.jpg)
+![](images/run.jpg)
